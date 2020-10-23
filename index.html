@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var onSuccessCreate = function(){
+			alert("database is created")
+		}
+		function createDatabase(){
+			var dbObj = openDatabase("html", "1.0", "My database",2 * 1024 * 1024, onSuccessCreate());
+			dbObj.transaction(function (tx) {  
+           			 tx.executeSql('CREATE TABLE IF NOT EXISTS Employee_Table (id unique, Name, Location)');  
+        	});
+		}
+		
+
+	</script>
+
+
+</head>
+<body>
+<h1>Welcome to the web world!</h1>
+<h1>check2<h1>
+
+	<h2>check</h2>
+<input list="browsers" name="browser">
+
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+<input type="date" name="bdate" min="1970-12-31">
+<input type="text" name="firstName" id="firstNameId" >
+<button onclick="saveData()">save data</button>
+<button onclick="showData()">show data</button>
+<form oninput="o.value=a.value*1+1*b.value">
+	
+	<input type="number" name="a" value="2">
+	<input type="number" name="b" value="3">
+	<output name="o"></output>
+</form>
+<script type="text/javascript">
+	function saveData()
+	{
+		if(typeof(Storage)!="undefined")
+		{
+         localStorage.setItem("firstname",document.getElementById("firstNameId").value);
+		}
+	}
+	function showData()
+	{
+		if(typeof(Storage)!="undefined")
+		{
+         alert(localStorage.getItem("firstname"))
+		}
+	}
+	
+</script>
+
+</body>
+</html>
